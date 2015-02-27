@@ -1,2 +1,3 @@
 # check_mk-documentation
-Check_MK Documentation
+This is the repo that holds the documentation available at www.sphs.ro/check_mk/?? .
+I intend to keep this updated with the current stable version.
