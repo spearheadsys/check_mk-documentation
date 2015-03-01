@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>What is Monitoring all about? &mdash; Check_MK 1.2.6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.2.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Check_MK 1.2.6 documentation" href="index.html" />
+    <link rel="next" title="Check_MK Architecture" href="cmkarchitecture.html" />
+    <link rel="prev" title="Check_MK Documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="cmkarchitecture.html" title="Check_MK Architecture"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Check_MK Documentation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Check_MK 1.2.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="what-is-monitoring-all-about">
+<h1>What is Monitoring all about?<a class="headerlink" href="#what-is-monitoring-all-about" title="Permalink to this headline">¶</a></h1>
+<p>We monitor entire systems, networks and applications to get information about
+their state as well as events.</p>
+<p>The gathered information gives us an overview of the health of the
+infrastructure. It helps us react faster to incidents but more importantly it
+helps us in becoming more proactive by utilizing trending and historical
+information we will know to act before an issue becomes critical.</p>
+<p>Keeping an eye on the entire it infrastructure provides many benefits for the
+business side as well. With a properly configured monitoring solution you will
+have trending and historical information that can be used to make decisions such
+as capacity planning (what systems need upgrading in the next 6 months; or which
+file servers need more space).</p>
+<p>So now that we have this short overview of what monitoring can do for us lets
+look at what monitoring is all about from the check_mk perspective.</p>
+<div class="section" id="states">
+<h2>States<a class="headerlink" href="#states" title="Permalink to this headline">¶</a></h2>
+<p>States are determined by a measurement or a check.  This verification or polling
+needs to be carried out regularly.</p>
+<p>States give us information such as: is the service running, how much memory is
+being used and is a very reliable process.</p>
+</div>
+<div class="section" id="events">
+<h2>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h2>
+<p>Events are more dynamic in their nature and therefore are not easily identified
+by a regular polling interval. Events may also be errors which only occur once
+making them that much more difficult to identify by regular checks. Examples of
+events are: disk I/O errors or hot-plug/add of a device.</p>
+</div>
+<div class="section" id="what-is-a-monitoring-system">
+<h2>What is a monitoring system?<a class="headerlink" href="#what-is-a-monitoring-system" title="Permalink to this headline">¶</a></h2>
+<p>A monitoring system is a piece of software that offers monitoring facilities.
+Usually such a system is state based that retrieves information from the
+monitored hosts via some mechanism. This information often called the check
+result is then processed, stored and possibly archived. The system will also
+provide methods to retrieve and display the check results.</p>
+</div>
+<div class="section" id="what-is-a-check">
+<h2>What is a check?<a class="headerlink" href="#what-is-a-check" title="Permalink to this headline">¶</a></h2>
+<p>A check is also a piece of software running on a computer that does the
+measurement of a service. An example of a check is: opening a TCP connection to
+a web server and verifying the result. The check determines the state of a
+service.</p>
+</div>
+<div class="section" id="active-vs-passive-checks">
+<h2>Active vs. Passive Checks<a class="headerlink" href="#active-vs-passive-checks" title="Permalink to this headline">¶</a></h2>
+<p>In monitoring there is the concept of active and passive checks. An active check
+is triggered by the monitoring server usually through a poll or request.</p>
+<p>A passive check is sent directly by the monitored server and the server has no
+influence on when this result is sent. Furthermore a passive check may not send
+a result during a specified time-frame and the monitoring server can raise an
+alarm at that point.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">What is Monitoring all about?</a><ul>
+<li><a class="reference internal" href="#states">States</a></li>
+<li><a class="reference internal" href="#events">Events</a></li>
+<li><a class="reference internal" href="#what-is-a-monitoring-system">What is a monitoring system?</a></li>
+<li><a class="reference internal" href="#what-is-a-check">What is a check?</a></li>
+<li><a class="reference internal" href="#active-vs-passive-checks">Active vs. Passive Checks</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Check_MK Documentation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="cmkarchitecture.html"
+                        title="next chapter">Check_MK Architecture</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="cmkarchitecture.html" title="Check_MK Architecture"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Check_MK Documentation"
+             >previous</a> |</li>
+        <li><a href="index.html">Check_MK 1.2.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

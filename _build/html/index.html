@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Check_MK Documentation &mdash; Check_MK 1.2.6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.2.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Check_MK 1.2.6 documentation" href="#" />
+    <link rel="next" title="What is Monitoring all about?" href="intro.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="intro.html" title="What is Monitoring all about?"
+             accesskey="N">next</a> |</li>
+        <li><a href="#">Check_MK 1.2.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="check-mk-documentation">
+<h1>Check_MK Documentation<a class="headerlink" href="#check-mk-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Welcome to the Check_MK documentation. The official check_mk documentation is
+available at the following link <a class="reference external" href="http://mathias-kettner.com/checkmk.html">http://mathias-kettner.com/checkmk.html</a>.</p>
+<p>The documentation provided here is a personal effort to provide documentation
+for the commercial check_mk monitoring system however the majority of the
+information here should apply to the open source versions as well.</p>
+<p>This documentation is provided as is and while we try our best to make sure we
+provide up to date and accurate information we provide no guarantees.</p>
+<p>Contents:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">What is Monitoring all about?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#states">States</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#events">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#what-is-a-monitoring-system">What is a monitoring system?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#what-is-a-check">What is a check?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#active-vs-passive-checks">Active vs. Passive Checks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cmkarchitecture.html">Check_MK Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmkarchitecture.html#check-mk-components">Check_MK Components</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cmkarchitecture.html#configuration-check-engine">Configuration &amp; Check Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmkarchitecture.html#livestatus">Livestatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmkarchitecture.html#multisite">Multisite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmkarchitecture.html#wato">WATO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmkarchitecture.html#notify">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmkarchitecture.html#business-intelligence">Business Intelligence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmkarchitecture.html#mobile">Mobile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmkarchitecture.html#event-console">Event Console</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Check_MK Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#operating-system">Operating System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#disk-space">Disk Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#smtp-for-outgoing-emails">SMTP for outgoing emails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#time-services">Time services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#repository">Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#downloading-check-mk">Downloading Check_MK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#confirmation">Confirmation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="firstsite.html">Create a Site</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firstsite.html#omd-command">OMD command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firstsite.html#omd-config-command">OMD config command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firstsite.html#creating-the-site">Creating the site</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="firstlnxhost.html">Adding a Linux host</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firstlnxhost.html#omd-command">OMD command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firstlnxhost.html#omd-config-command">OMD config command</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Next topic</h4>
+  <p class="topless"><a href="intro.html"
+                        title="next chapter">What is Monitoring all about?</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="intro.html" title="What is Monitoring all about?"
+             >next</a> |</li>
+        <li><a href="#">Check_MK 1.2.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

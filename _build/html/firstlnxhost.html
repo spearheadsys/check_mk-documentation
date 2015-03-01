@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Adding a Linux host &mdash; Check_MK 1.2.6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.2.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Check_MK 1.2.6 documentation" href="index.html" />
+    <link rel="prev" title="Create a Site" href="firstsite.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="firstsite.html" title="Create a Site"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Check_MK 1.2.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="adding-a-linux-host">
+<h1>Adding a Linux host<a class="headerlink" href="#adding-a-linux-host" title="Permalink to this headline">¶</a></h1>
+<p>In order to monitor</p>
+<div class="section" id="omd-command">
+<h2>OMD command<a class="headerlink" href="#omd-command" title="Permalink to this headline">¶</a></h2>
+<p>The omd command is used to create, update, delete, configure, start, stop and
+provides many other options for your monitoring sistes. omd can be used as the
+root user and thus it will have access to all of the monitoring sites or as
+the respective user of any one monitoring site in which case it will have
+access to only that particular site.</p>
+<p>Here is example output from the omd command called as a site user:</p>
+<div class="highlight-python"><div class="highlight"><pre>[siteuser@omd ~]$ omd
+
+Usage (called as site user):
+omd help                        Show general help
+omd version    [SITE]           Show version of OMD
+omd versions                    List installed OMD versions
+omd sites                       Show list of sites
+omd update                      Update site to other version of OMD
+omd start      [SERVICE]        Start services of one or all sites
+omd stop       [SERVICE]        Stop services of site(s)
+omd restart    [SERVICE]        Restart services of site(s)
+omd reload     [SERVICE]        Reload services of site(s)
+omd status     [SERVICE]        Show status of services of site(s)
+omd config     ...              Show and set site configuration parameters
+omd diff       ([RELBASE])      Shows differences compared to the original version files
+omd umount                      Umount ramdisk volumes of site(s)
+omd backup     SITE [-|ARCHIVE_PATH] Create a backup tarball of a site, writing it to a file or stdout
+
+General Options:
+-V &lt;version&gt;                    set specific version, useful in combination with update/create
+omd COMMAND -h, --help          show available options of COMMAND
+</pre></div>
+</div>
+<p>Here is example out form the omd command called as the root user:</p>
+<div class="highlight-python"><div class="highlight"><pre>omd [root@cmk mariusp]# omd
+Usage (called as root):
+
+omd help                               Show general help
+omd setup                              Prepare operating system for OMD (installs packages)
+omd uninstall                          Remove OMD and all sites!
+omd setversion VERSION                 Sets the default version of OMD which will be used by new sites
+omd version    [SITE]                  Show version of OMD
+omd versions                           List installed OMD versions
+omd sites                              Show list of sites
+omd create     SITE                    Create a new site (-u UID, -g GID)
+omd init       SITE                    Populate site directory with default files and enable the site
+omd rm         SITE                    Remove a site (and its data)
+omd disable    SITE                    Disable a site (stop it, unmount tmpfs, remove Apache hook)
+omd enable     SITE                    Enable a site (reenable a formerly disabled site)
+omd mv         SITE NEWNAME            Rename a site
+omd cp         SITE NEWNAME            Make a copy of a site
+omd update     SITE                    Update site to other version of OMD
+omd start      [SITE] [SERVICE]        Start services of one or all sites
+omd stop       [SITE] [SERVICE]        Stop services of site(s)
+omd restart    [SITE] [SERVICE]        Restart services of site(s)
+omd reload     [SITE] [SERVICE]        Reload services of site(s)
+omd status     [SITE] [SERVICE]        Show status of services of site(s)
+omd config     SITE ...                Show and set site configuration parameters
+omd diff       SITE ([RELBASE])        Shows differences compared to the original version files
+omd su         SITE                    Run a shell as a site-user
+omd umount     [SITE]                  Umount ramdisk volumes of site(s)
+omd backup     SITE SITE [-|ARCHIVE_PATH] Create a backup tarball of a site, writing it to a file or stdout
+omd restore    [SITE] [-|ARCHIVE_PATH] Restores the backup of a site to an existing site or creates a new site
+
+General Options:
+-V &lt;version&gt;                    set specific version, useful in combination with update/create
+omd COMMAND -h, --help          show available options of COMMAND
+</pre></div>
+</div>
+</div>
+<div class="section" id="omd-config-command">
+<h2>OMD config command<a class="headerlink" href="#omd-config-command" title="Permalink to this headline">¶</a></h2>
+<p>To configure your site as a user you issue the following</p>
+<p><tt class="docutils literal"><span class="pre">omd</span> <span class="pre">config</span></tt></p>
+<p>To configure your site as the root user you must also specify the site name as
+follows</p>
+<p><tt class="docutils literal"><span class="pre">omd</span> <span class="pre">config</span> <span class="pre">siteone</span></tt></p>
+<p>In either case you will get a graphical interface to aid you in configuration.</p>
+<img alt="_images/ev-config1.png" src="_images/ev-config1.png" />
+<p>We recommend that for your first site you do not make any modifications since
+these options are for advanced usage.</p>
+<dl class="docutils">
+<dt>Basic</dt>
+<dd><ul class="first last simple">
+<li>Autostart: Lets you choose if your site is started automatically during reboot of your server</li>
+<li>Core: Allows you to use the traditional nagios core or the microcore</li>
+<li>Crontab: Disables or enables site specific crontabs at boot time</li>
+<li>tmpfs: Disables or enables the use of a ramdisk for temporary files</li>
+</ul>
+</dd>
+<dt>Web GUI</dt>
+<dd><ul class="first last simple">
+<li>Apache Mode: Lets you choose to run a dedicated apache webserver for this site, or use the system webserver process directly</li>
+<li>Apache TCP_ADDR: Lets you choose the ip address of your apache webserver</li>
+<li>Apache TCP_PORT: Lets you choose the tcp port apache uses</li>
+<li>Default_GUI: Lets you choose other GUIs besides Check_MKs multisite GUI</li>
+<li>DOKUWIKI_AUTH: Enables the use of the dokuwiki user database for authentication instead of ~/etc/passwd</li>
+<li>MULTISITE_AUTHORISATION: Lets multisite manage the permissions of the addon users</li>
+<li>MULTISITE_COOKIE_AUTH: Enable or disable cookie based authentication</li>
+<li>NAGIOS_THEME: Switch between installed Nagios themes</li>
+</ul>
+</dd>
+<dt>Addons</dt>
+<dd><ul class="first last simple">
+<li>MKEVENTD: This option enables mkeventd - the event correlation and classification daemon of Check_MK</li>
+<li>MKNOTIFYD: Enables of disables Check_MKs notification spooler</li>
+<li>NAGVIS_URLS: Lets you choose which GUI is used when clicking on the NagVis map icons</li>
+<li>PNP4NAGIOS: Lets you enable or disable PNP4Nagios, a great addon to store nagios performance data to round robin databases</li>
+</ul>
+</dd>
+<dt>Distributed Monitoring</dt>
+<dd><ul class="first last simple">
+<li>LIVEPROXYD: This option enables the livestatus proxy daemon</li>
+<li>LIVESTATUS_TCP: Make the livestatus proxy daemon listen on a tcp port in addition to the unix socket</li>
+</ul>
+</dd>
+</dl>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Adding a Linux host</a><ul>
+<li><a class="reference internal" href="#omd-command">OMD command</a></li>
+<li><a class="reference internal" href="#omd-config-command">OMD config command</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="firstsite.html"
+                        title="previous chapter">Create a Site</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="firstsite.html" title="Create a Site"
+             >previous</a> |</li>
+        <li><a href="index.html">Check_MK 1.2.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>
