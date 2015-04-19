@@ -1,6 +1,13 @@
 Adding a Linux host
 ==========
-In order to monitor
+In order to monitor your Linux hosts you must install the check_mk agent.
+Installation of the check_mk agent can be performend in one of several ways:
+
+* Use the agent bakery and "bake" your required agent
+* Use the prebuild package (source or RPM) available from mathias-kettner.de
+* Grap one directly from your existing OMD site(s)
+
+
 
 OMD command
 -----------

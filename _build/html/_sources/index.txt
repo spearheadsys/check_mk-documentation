@@ -12,8 +12,10 @@ The documentation provided here is a personal effort to provide documentation
 for the commercial check_mk monitoring system however the majority of the
 information here should apply to the open source versions as well.
 
-This documentation is provided as is and while we try our best to make sure we
-provide up to date and accurate information we provide no guarantees.
+If you find mistakes or feel you could contribute in helping us provide better documentation please feel free to dive in by visiting `this github page`_.
+
+.. _this github page: https://github.com/mariuspana/check_mk-documentation
+
 
 Contents:
 
@@ -24,4 +26,8 @@ Contents:
    cmkarchitecture
    quickstart
    firstsite
+   contacts
+   contactgroups
+   notifications
    firstlnxhost
+   firstwinhost
