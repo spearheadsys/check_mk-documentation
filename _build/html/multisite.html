@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; Check_MK 1.2.6 documentation</title>
+  <title>Multisite &mdash; Check_MK 1.2.6 documentation</title>
   
 
   
@@ -31,7 +30,8 @@
   
 
   
-    <link rel="top" title="Check_MK 1.2.6 documentation" href="index.html"/> 
+    <link rel="top" title="Check_MK 1.2.6 documentation" href="index.html"/>
+        <link rel="prev" title="Adding a Windows host" href="firstwinhost.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -62,7 +62,7 @@
         
           
           
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">What is Monitoring all about?</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="intro.html#states">States</a></li>
 <li class="toctree-l2"><a class="reference internal" href="intro.html#events">Events</a></li>
@@ -115,9 +115,9 @@
 <li class="toctree-l2"><a class="reference internal" href="firstwinhost.html#adding-host-to-omd">Adding host to OMD</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="multisite.html">Multisite</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="multisite.html#views">Views</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multisite.html#distributed-monitoring">Distributed monitoring</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Multisite</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#views">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#distributed-monitoring">Distributed monitoring</a></li>
 </ul>
 </li>
 </ul>
@@ -144,7 +144,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li></li>
+    <li>Multisite</li>
       <li class="wy-breadcrumbs-aside">
         
       </li>
@@ -153,16 +153,39 @@
 </div>
           <div role="main" class="document">
             
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <div class="section" id="multisite">
+<h1>Multisite<a class="headerlink" href="#multisite" title="Permalink to this headline">¶</a></h1>
+<p>Check_MK utilises the intuitive Multisite web GUI for displaying monitoring status information. Multisite is based on Livestatus therefore it is extremely fast and respomsive in large installations.</p>
+<p>Multisite brings many innovations such as:</p>
+<ul class="simple">
+<li>User definable Views</li>
+<li>Support for distributed monitoring via Livestatus</li>
+<li>Customizable sidebar with dynamic content</li>
+<li>Automation and Webservice</li>
+<li>Dashboards</li>
+<li>Localization</li>
+</ul>
+<div class="section" id="views">
+<h2>Views<a class="headerlink" href="#views" title="Permalink to this headline">¶</a></h2>
+<p>Multisite allows each user to customize the builtin views or create completely new views. This is done in the GUI by flexibly combining datasources, layouts, filters, sortings, groupings, column-painters and inter-view-links. The idea behind is, that the administrators of the monitoring system should be able to create custom views for their users or customers, while those are presented a GUI as simple as possible.</p>
+<p>The elements of views - like layouts, filters and so on - can be extended via Python using a plugin concept.</p>
+</div>
+<div class="section" id="distributed-monitoring">
+<h2>Distributed monitoring<a class="headerlink" href="#distributed-monitoring" title="Permalink to this headline">¶</a></h2>
+<p>Distributed monitoring is extremely useful in many situations. Check_MK allows for the centralized viewing of data as well as replication of data to remote sites.</p>
+</div>
 </div>
 
 
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="firstwinhost.html" class="btn btn-neutral" title="Adding a Windows host"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

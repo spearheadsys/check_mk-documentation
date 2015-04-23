@@ -1,6 +1,6 @@
-Adding a Linux host
+Adding a Windows host
 ==========
-In order to monitor your Linux hosts you must install the check_mk agent and provide a way for the check_mk server to communicate with the agents.
+In order to monitor your Windows hosts you must install the check_mk agent and provide a way for the check_mk server to communicate with the agents.
 
 Installation of the check_mk agent can be performed a couple of different ways. Below we cover the most common options:
 
@@ -21,34 +21,43 @@ Prebuilt package
 -----------
 All OMD site instances have prebuilt agents available in ~share/check_mk/agents. You will find there the MSI, RPM and DEB agent as well as the pure (script) agents (check_mk_agent.linux).
 
-The RPM/DEB packages will place the check_mk_agent script (for linux/unix) environments in its proper place (/usr/bin). If you download the check_mk_agent.(linux|unix|*) script then you must make this file executable (chmod +x) and also place it in its proper place. You may also want to create the MK_LIBDIR (/usr/lib/check_mk_agent) and MK_CONFDIR (/etc/check_mk) for configuration variables or custom/local plugins (more on these later).
-
 These prebuilt agents are also available via the OMD site URL: http://hostname_or_ip/<omd site name>/check_mk/agents/. At this URL you will also find additional plugins as well as the xinetd.conf configuration file.
 
-Xinetd
+Windows installer
 -----------
-The easiest and quickest way to get up and running is to setup xinetd to ease communications between the check_mk server and the agent. In the prebuilt agents directory you also have an xinetd.conf file. Copy this file over to /etc/xinet.d/check_mk and edit accordingly. Usually you want to configure the only_from variable to allow connections only from your monitoring server.
+The windows installer supports the following command line arguments:
 
-After copying the xinetd configuration file restart the xinetd server and proceed to testing connectivity by telnetting from your monitoring server to your monitoring client on tcp port 6556.
+::
+
+    /S - runs the installer silently
+    /D= - sets the default installation directory
+
+
+After installation the check_mk_agent service should have started automatically. You can confirm this by telnetting from your OMD site to the monitored server on tcp port 6556:
 
 ::
 
     user@host> telnet xyzhost123 6556
-    Trying 10.0.21.47...
-    Connected to xyzhost123.
-    Escape character is '^]'.
     <<<check_mk>>>
-    Version: 1.1.8
-    AgentOS: linux
+    Version: 1.2.5i5p3
+    BuildDate: Jul 28 2014
+    Architecture: 32bit
+    AgentOS: windows
+    Hostname: xyzhost123
+    WorkingDirectory: C:\Windows\system32
+    ConfigFile: C:\Program Files (x86)\check_mk\check_mk.ini
+    AgentDirectory: C:\Program Files (x86)\check_mk
+    PluginsDirectory: C:\Program Files (x86)\check_mk\plugins
+    SpoolDirectory: C:\Program Files (x86)\check_mk\spool
+    LocalDirectory: C:\Program Files (x86)\check_mk\local
+    ScriptStatistics: Plugin C:0 E:0 T:0 Local C:0 E:0 T:0
+    OnlyFrom: 0.0.0.0/0
+    <<<uptime>>>
+    1929017
     <<<df>>>
-    /dev/sda1     ext3     1008888    223832    733808      24% /
-    /dev/sdc1     ext3     1032088    284648    695012      30% /lib/modules
-    <<<ps>>>
-    init [3]
-    /sbin/syslogd
-    /sbin/klogd -x
-    /usr/sbin/cron
-    /sbin/getty 38400 tty2
+    C:\ NTFS 83991548 49014400 34977148 59% C:\
+    Share&ExchangeBackup NTFS 251658236 222849392 28808844 89% D:\
+    Exchange NTFS 150674428 73825484 76848944 49% E:\
 
 Adding host to OMD
 ------------------
@@ -68,4 +77,5 @@ For every service discovered you can choose to:
 (4) Temporarily ignore the service
 
 
-* Additional details can be found at the check_mk site https://mathias-kettner.de/checkmk_linuxagent.html
+
+* Additional details can be found at the check_mk site https://mathias-kettner.de/checkmk_windows.html

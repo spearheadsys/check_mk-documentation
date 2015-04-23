@@ -31,3 +31,4 @@ Contents:
    notifications
    firstlnxhost
    firstwinhost
+   multisite

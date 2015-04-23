@@ -31,6 +31,7 @@
 
   
     <link rel="top" title="Check_MK 1.2.6 documentation" href="index.html"/>
+        <link rel="next" title="Adding a Windows host" href="firstwinhost.html"/>
         <link rel="prev" title="Create a Site" href="firstsite.html"/> 
 
   
@@ -102,8 +103,22 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Adding a Linux host</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#omd-command">OMD command</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#omd-config-command">OMD config command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#agent-bakery">Agent bakery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#prebuilt-package">Prebuilt package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xinetd">Xinetd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-host-to-omd">Adding host to OMD</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="firstwinhost.html">Adding a Windows host</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firstwinhost.html#agent-bakery">Agent bakery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firstwinhost.html#prebuilt-package">Prebuilt package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firstwinhost.html#windows-installer">Windows installer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firstwinhost.html#adding-host-to-omd">Adding host to OMD</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multisite.html">Multisite</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multisite.html#views">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multisite.html#distributed-monitoring">Distributed monitoring</a></li>
 </ul>
 </li>
 </ul>
@@ -141,128 +156,64 @@
             
   <div class="section" id="adding-a-linux-host">
 <h1>Adding a Linux host<a class="headerlink" href="#adding-a-linux-host" title="Permalink to this headline">¶</a></h1>
-<p>In order to monitor your Linux hosts you must install the check_mk agent.
-Installation of the check_mk agent can be performend in one of several ways:</p>
+<p>In order to monitor your Linux hosts you must install the check_mk agent and provide a way for the check_mk server to communicate with the agents.</p>
+<p>Installation of the check_mk agent can be performed a couple of different ways. Below we cover the most common options:</p>
 <ul class="simple">
-<li>Use the agent bakery and &#8220;bake&#8221; your required agent</li>
-<li>Use the prebuild package (source or RPM) available from mathias-kettner.de</li>
-<li>Grap one directly from your existing OMD site(s)</li>
+<li>Use the agent bakery and &#8220;bake&#8221; your own agent</li>
+<li>Grab one directly from your existing OMD site(s)</li>
 </ul>
-<div class="section" id="omd-command">
-<h2>OMD command<a class="headerlink" href="#omd-command" title="Permalink to this headline">¶</a></h2>
-<p>The omd command is used to create, update, delete, configure, start, stop and
-provides many other options for your monitoring sistes. omd can be used as the
-root user and thus it will have access to all of the monitoring sites or as
-the respective user of any one monitoring site in which case it will have
-access to only that particular site.</p>
-<p>Here is example output from the omd command called as a site user:</p>
-<div class="highlight-python"><div class="highlight"><pre>[siteuser@omd ~]$ omd
-
-Usage (called as site user):
-omd help                        Show general help
-omd version    [SITE]           Show version of OMD
-omd versions                    List installed OMD versions
-omd sites                       Show list of sites
-omd update                      Update site to other version of OMD
-omd start      [SERVICE]        Start services of one or all sites
-omd stop       [SERVICE]        Stop services of site(s)
-omd restart    [SERVICE]        Restart services of site(s)
-omd reload     [SERVICE]        Reload services of site(s)
-omd status     [SERVICE]        Show status of services of site(s)
-omd config     ...              Show and set site configuration parameters
-omd diff       ([RELBASE])      Shows differences compared to the original version files
-omd umount                      Umount ramdisk volumes of site(s)
-omd backup     SITE [-|ARCHIVE_PATH] Create a backup tarball of a site, writing it to a file or stdout
-
-General Options:
--V &lt;version&gt;                    set specific version, useful in combination with update/create
-omd COMMAND -h, --help          show available options of COMMAND
-</pre></div>
+<div class="section" id="agent-bakery">
+<h2>Agent bakery<a class="headerlink" href="#agent-bakery" title="Permalink to this headline">¶</a></h2>
+<p>The agent bakery allows you to use the same powerful rules based engine from WATO to create agents for you monitored servers. From WATO, access the Monitoring Agents section, click on the Rules button and configure your agents accordingly.</p>
+<p>Once you have created the rules to your specifications go back to the Monitoring Agents main page and click on the Bake Agents button.</p>
+<p>Depending on your rules you will have one or more agents for one or more operating environments (rpm, deb, msi). You can click on the DEB/RPM/MSI link and download your agent.</p>
+<p>Copy that agent over to your monitored server(s) and install according to your operating environment requirements.</p>
 </div>
-<p>Here is example out form the omd command called as the root user:</p>
-<div class="highlight-python"><div class="highlight"><pre>omd [root@cmk mariusp]# omd
-Usage (called as root):
-
-omd help                               Show general help
-omd setup                              Prepare operating system for OMD (installs packages)
-omd uninstall                          Remove OMD and all sites!
-omd setversion VERSION                 Sets the default version of OMD which will be used by new sites
-omd version    [SITE]                  Show version of OMD
-omd versions                           List installed OMD versions
-omd sites                              Show list of sites
-omd create     SITE                    Create a new site (-u UID, -g GID)
-omd init       SITE                    Populate site directory with default files and enable the site
-omd rm         SITE                    Remove a site (and its data)
-omd disable    SITE                    Disable a site (stop it, unmount tmpfs, remove Apache hook)
-omd enable     SITE                    Enable a site (reenable a formerly disabled site)
-omd mv         SITE NEWNAME            Rename a site
-omd cp         SITE NEWNAME            Make a copy of a site
-omd update     SITE                    Update site to other version of OMD
-omd start      [SITE] [SERVICE]        Start services of one or all sites
-omd stop       [SITE] [SERVICE]        Stop services of site(s)
-omd restart    [SITE] [SERVICE]        Restart services of site(s)
-omd reload     [SITE] [SERVICE]        Reload services of site(s)
-omd status     [SITE] [SERVICE]        Show status of services of site(s)
-omd config     SITE ...                Show and set site configuration parameters
-omd diff       SITE ([RELBASE])        Shows differences compared to the original version files
-omd su         SITE                    Run a shell as a site-user
-omd umount     [SITE]                  Umount ramdisk volumes of site(s)
-omd backup     SITE SITE [-|ARCHIVE_PATH] Create a backup tarball of a site, writing it to a file or stdout
-omd restore    [SITE] [-|ARCHIVE_PATH] Restores the backup of a site to an existing site or creates a new site
-
-General Options:
--V &lt;version&gt;                    set specific version, useful in combination with update/create
-omd COMMAND -h, --help          show available options of COMMAND
+<div class="section" id="prebuilt-package">
+<h2>Prebuilt package<a class="headerlink" href="#prebuilt-package" title="Permalink to this headline">¶</a></h2>
+<p>All OMD site instances have prebuilt agents available in ~share/check_mk/agents. You will find there the MSI, RPM and DEB agent as well as the pure (script) agents (check_mk_agent.linux).</p>
+<p>The RPM/DEB packages will place the check_mk_agent script (for linux/unix) environments in its proper place (/usr/bin). If you download the check_mk_agent.(linux|unix|*) script then you must make this file executable (chmod +x) and also place it in its proper place. You may also want to create the MK_LIBDIR (/usr/lib/check_mk_agent) and MK_CONFDIR (/etc/check_mk) for configuration variables or custom/local plugins (more on these later).</p>
+<p>These prebuilt agents are also available via the OMD site URL: <a class="reference external" href="http://hostname_or_ip">http://hostname_or_ip</a>/&lt;omd site name&gt;/check_mk/agents/. At this URL you will also find additional plugins as well as the xinetd.conf configuration file.</p>
+</div>
+<div class="section" id="xinetd">
+<h2>Xinetd<a class="headerlink" href="#xinetd" title="Permalink to this headline">¶</a></h2>
+<p>The easiest and quickest way to get up and running is to setup xinetd to ease communications between the check_mk server and the agent. In the prebuilt agents directory you also have an xinetd.conf file. Copy this file over to /etc/xinet.d/check_mk and edit accordingly. Usually you want to configure the only_from variable to allow connections only from your monitoring server.</p>
+<p>After copying the xinetd configuration file restart the xinetd server and proceed to testing connectivity by telnetting from your monitoring server to your monitoring client on tcp port 6556.</p>
+<div class="highlight-python"><div class="highlight"><pre>user@host&gt; telnet xyzhost123 6556
+Trying 10.0.21.47...
+Connected to xyzhost123.
+Escape character is &#39;^]&#39;.
+&lt;&lt;&lt;check_mk&gt;&gt;&gt;
+Version: 1.1.8
+AgentOS: linux
+&lt;&lt;&lt;df&gt;&gt;&gt;
+/dev/sda1     ext3     1008888    223832    733808      24% /
+/dev/sdc1     ext3     1032088    284648    695012      30% /lib/modules
+&lt;&lt;&lt;ps&gt;&gt;&gt;
+init [3]
+/sbin/syslogd
+/sbin/klogd -x
+/usr/sbin/cron
+/sbin/getty 38400 tty2
 </pre></div>
 </div>
 </div>
-<div class="section" id="omd-config-command">
-<h2>OMD config command<a class="headerlink" href="#omd-config-command" title="Permalink to this headline">¶</a></h2>
-<p>To configure your site as a user you issue the following</p>
-<p><tt class="docutils literal"><span class="pre">omd</span> <span class="pre">config</span></tt></p>
-<p>To configure your site as the root user you must also specify the site name as
-follows</p>
-<p><tt class="docutils literal"><span class="pre">omd</span> <span class="pre">config</span> <span class="pre">siteone</span></tt></p>
-<p>In either case you will get a graphical interface to aid you in configuration.</p>
-<img alt="_images/ev-config1.png" src="_images/ev-config1.png" />
-<p>We recommend that for your first site you do not make any modifications since
-these options are for advanced usage.</p>
-<dl class="docutils">
-<dt>Basic</dt>
-<dd><ul class="first last simple">
-<li>Autostart: Lets you choose if your site is started automatically during reboot of your server</li>
-<li>Core: Allows you to use the traditional nagios core or the microcore</li>
-<li>Crontab: Disables or enables site specific crontabs at boot time</li>
-<li>tmpfs: Disables or enables the use of a ramdisk for temporary files</li>
+<div class="section" id="adding-host-to-omd">
+<h2>Adding host to OMD<a class="headerlink" href="#adding-host-to-omd" title="Permalink to this headline">¶</a></h2>
+<p>After confirming that the agent is accessible you can access WATO, Hosts and click on New host. For our example you can fill out just the hostname and click on Save &amp; go to Services button.</p>
+<p>If the hostname is resolvable via DNS you do not need to also specify the IP address however if it is not then the IP address is a required field.</p>
+<p>After this step you will be taken to the Services page where you can select and configure the services that check_mk has discovered on your server.</p>
+<p>For every service discovered you can choose to:</p>
+<img alt="_images/srv-discovery.png" src="_images/srv-discovery.png" />
+<ol class="arabic simple">
+<li>View and edit parameters</li>
+<li>Edit and analyze check parameters</li>
+<li>Create a rule to permanently disable discovery of said service</li>
+<li>Temporarily ignore the service</li>
+</ol>
+<ul class="simple">
+<li>Additional details can be found at the check_mk site <a class="reference external" href="https://mathias-kettner.de/checkmk_linuxagent.html">https://mathias-kettner.de/checkmk_linuxagent.html</a></li>
 </ul>
-</dd>
-<dt>Web GUI</dt>
-<dd><ul class="first last simple">
-<li>Apache Mode: Lets you choose to run a dedicated apache webserver for this site, or use the system webserver process directly</li>
-<li>Apache TCP_ADDR: Lets you choose the ip address of your apache webserver</li>
-<li>Apache TCP_PORT: Lets you choose the tcp port apache uses</li>
-<li>Default_GUI: Lets you choose other GUIs besides Check_MKs multisite GUI</li>
-<li>DOKUWIKI_AUTH: Enables the use of the dokuwiki user database for authentication instead of ~/etc/passwd</li>
-<li>MULTISITE_AUTHORISATION: Lets multisite manage the permissions of the addon users</li>
-<li>MULTISITE_COOKIE_AUTH: Enable or disable cookie based authentication</li>
-<li>NAGIOS_THEME: Switch between installed Nagios themes</li>
-</ul>
-</dd>
-<dt>Addons</dt>
-<dd><ul class="first last simple">
-<li>MKEVENTD: This option enables mkeventd - the event correlation and classification daemon of Check_MK</li>
-<li>MKNOTIFYD: Enables of disables Check_MKs notification spooler</li>
-<li>NAGVIS_URLS: Lets you choose which GUI is used when clicking on the NagVis map icons</li>
-<li>PNP4NAGIOS: Lets you enable or disable PNP4Nagios, a great addon to store nagios performance data to round robin databases</li>
-</ul>
-</dd>
-<dt>Distributed Monitoring</dt>
-<dd><ul class="first last simple">
-<li>LIVEPROXYD: This option enables the livestatus proxy daemon</li>
-<li>LIVESTATUS_TCP: Make the livestatus proxy daemon listen on a tcp port in addition to the unix socket</li>
-</ul>
-</dd>
-</dl>
 </div>
 </div>
 
@@ -271,6 +222,8 @@ these options are for advanced usage.</p>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="firstwinhost.html" class="btn btn-neutral float-right" title="Adding a Windows host">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="firstsite.html" class="btn btn-neutral" title="Create a Site"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; Check_MK 1.2.6 documentation</title>
+  <title>Adding a Windows host &mdash; Check_MK 1.2.6 documentation</title>
   
 
   
@@ -31,7 +30,9 @@
   
 
   
-    <link rel="top" title="Check_MK 1.2.6 documentation" href="index.html"/> 
+    <link rel="top" title="Check_MK 1.2.6 documentation" href="index.html"/>
+        <link rel="next" title="Multisite" href="multisite.html"/>
+        <link rel="prev" title="Adding a Linux host" href="firstlnxhost.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -62,7 +63,7 @@
         
           
           
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">What is Monitoring all about?</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="intro.html#states">States</a></li>
 <li class="toctree-l2"><a class="reference internal" href="intro.html#events">Events</a></li>
@@ -108,11 +109,11 @@
 <li class="toctree-l2"><a class="reference internal" href="firstlnxhost.html#adding-host-to-omd">Adding host to OMD</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="firstwinhost.html">Adding a Windows host</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="firstwinhost.html#agent-bakery">Agent bakery</a></li>
-<li class="toctree-l2"><a class="reference internal" href="firstwinhost.html#prebuilt-package">Prebuilt package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="firstwinhost.html#windows-installer">Windows installer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="firstwinhost.html#adding-host-to-omd">Adding host to OMD</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Adding a Windows host</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#agent-bakery">Agent bakery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#prebuilt-package">Prebuilt package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#windows-installer">Windows installer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-host-to-omd">Adding host to OMD</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="multisite.html">Multisite</a><ul>
@@ -144,7 +145,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li></li>
+    <li>Adding a Windows host</li>
       <li class="wy-breadcrumbs-aside">
         
       </li>
@@ -153,16 +154,89 @@
 </div>
           <div role="main" class="document">
             
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <div class="section" id="adding-a-windows-host">
+<h1>Adding a Windows host<a class="headerlink" href="#adding-a-windows-host" title="Permalink to this headline">¶</a></h1>
+<p>In order to monitor your Windows hosts you must install the check_mk agent and provide a way for the check_mk server to communicate with the agents.</p>
+<p>Installation of the check_mk agent can be performed a couple of different ways. Below we cover the most common options:</p>
+<ul class="simple">
+<li>Use the agent bakery and &#8220;bake&#8221; your own agent</li>
+<li>Grab one directly from your existing OMD site(s)</li>
+</ul>
+<div class="section" id="agent-bakery">
+<h2>Agent bakery<a class="headerlink" href="#agent-bakery" title="Permalink to this headline">¶</a></h2>
+<p>The agent bakery allows you to use the same powerful rules based engine from WATO to create agents for you monitored servers. From WATO, access the Monitoring Agents section, click on the Rules button and configure your agents accordingly.</p>
+<p>Once you have created the rules to your specifications go back to the Monitoring Agents main page and click on the Bake Agents button.</p>
+<p>Depending on your rules you will have one or more agents for one or more operating environments (rpm, deb, msi). You can click on the DEB/RPM/MSI link and download your agent.</p>
+<p>Copy that agent over to your monitored server(s) and install according to your operating environment requirements.</p>
+</div>
+<div class="section" id="prebuilt-package">
+<h2>Prebuilt package<a class="headerlink" href="#prebuilt-package" title="Permalink to this headline">¶</a></h2>
+<p>All OMD site instances have prebuilt agents available in ~share/check_mk/agents. You will find there the MSI, RPM and DEB agent as well as the pure (script) agents (check_mk_agent.linux).</p>
+<p>These prebuilt agents are also available via the OMD site URL: <a class="reference external" href="http://hostname_or_ip">http://hostname_or_ip</a>/&lt;omd site name&gt;/check_mk/agents/. At this URL you will also find additional plugins as well as the xinetd.conf configuration file.</p>
+</div>
+<div class="section" id="windows-installer">
+<h2>Windows installer<a class="headerlink" href="#windows-installer" title="Permalink to this headline">¶</a></h2>
+<p>The windows installer supports the following command line arguments:</p>
+<div class="highlight-python"><div class="highlight"><pre>/S - runs the installer silently
+/D= - sets the default installation directory
+</pre></div>
+</div>
+<p>After installation the check_mk_agent service should have started automatically. You can confirm this by telnetting from your OMD site to the monitored server on tcp port 6556:</p>
+<div class="highlight-python"><div class="highlight"><pre>user@host&gt; telnet xyzhost123 6556
+&lt;&lt;&lt;check_mk&gt;&gt;&gt;
+Version: 1.2.5i5p3
+BuildDate: Jul 28 2014
+Architecture: 32bit
+AgentOS: windows
+Hostname: xyzhost123
+WorkingDirectory: C:\Windows\system32
+ConfigFile: C:\Program Files (x86)\check_mk\check_mk.ini
+AgentDirectory: C:\Program Files (x86)\check_mk
+PluginsDirectory: C:\Program Files (x86)\check_mk\plugins
+SpoolDirectory: C:\Program Files (x86)\check_mk\spool
+LocalDirectory: C:\Program Files (x86)\check_mk\local
+ScriptStatistics: Plugin C:0 E:0 T:0 Local C:0 E:0 T:0
+OnlyFrom: 0.0.0.0/0
+&lt;&lt;&lt;uptime&gt;&gt;&gt;
+1929017
+&lt;&lt;&lt;df&gt;&gt;&gt;
+C:\ NTFS 83991548 49014400 34977148 59% C:\
+Share&amp;ExchangeBackup NTFS 251658236 222849392 28808844 89% D:\
+Exchange NTFS 150674428 73825484 76848944 49% E:\
+</pre></div>
+</div>
+</div>
+<div class="section" id="adding-host-to-omd">
+<h2>Adding host to OMD<a class="headerlink" href="#adding-host-to-omd" title="Permalink to this headline">¶</a></h2>
+<p>After confirming that the agent is accessible you can access WATO, Hosts and click on New host. For our example you can fill out just the hostname and click on Save &amp; go to Services button.</p>
+<p>If the hostname is resolvable via DNS you do not need to also specify the IP address however if it is not then the IP address is a required field.</p>
+<p>After this step you will be taken to the Services page where you can select and configure the services that check_mk has discovered on your server.</p>
+<p>For every service discovered you can choose to:</p>
+<img alt="_images/srv-discovery.png" src="_images/srv-discovery.png" />
+<ol class="arabic simple">
+<li>View and edit parameters</li>
+<li>Edit and analyze check parameters</li>
+<li>Create a rule to permanently disable discovery of said service</li>
+<li>Temporarily ignore the service</li>
+</ol>
+<ul class="simple">
+<li>Additional details can be found at the check_mk site <a class="reference external" href="https://mathias-kettner.de/checkmk_windows.html">https://mathias-kettner.de/checkmk_windows.html</a></li>
+</ul>
+</div>
 </div>
 
 
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="multisite.html" class="btn btn-neutral float-right" title="Multisite">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="firstlnxhost.html" class="btn btn-neutral" title="Adding a Linux host"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

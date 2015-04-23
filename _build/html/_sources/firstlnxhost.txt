@@ -1,123 +1,71 @@
 Adding a Linux host
 ==========
-In order to monitor your Linux hosts you must install the check_mk agent.
-Installation of the check_mk agent can be performend in one of several ways:
+In order to monitor your Linux hosts you must install the check_mk agent and provide a way for the check_mk server to communicate with the agents.
 
-* Use the agent bakery and "bake" your required agent
-* Use the prebuild package (source or RPM) available from mathias-kettner.de
-* Grap one directly from your existing OMD site(s)
+Installation of the check_mk agent can be performed a couple of different ways. Below we cover the most common options:
 
+* Use the agent bakery and "bake" your own agent
+* Grab one directly from your existing OMD site(s)
 
-
-OMD command
+Agent bakery
 -----------
-The omd command is used to create, update, delete, configure, start, stop and
-provides many other options for your monitoring sistes. omd can be used as the
-root user and thus it will have access to all of the monitoring sites or as
-the respective user of any one monitoring site in which case it will have
-access to only that particular site.
+The agent bakery allows you to use the same powerful rules based engine from WATO to create agents for you monitored servers. From WATO, access the Monitoring Agents section, click on the Rules button and configure your agents accordingly.
 
-Here is example output from the omd command called as a site user: ::
+Once you have created the rules to your specifications go back to the Monitoring Agents main page and click on the Bake Agents button.
 
-    [siteuser@omd ~]$ omd
+Depending on your rules you will have one or more agents for one or more operating environments (rpm, deb, msi). You can click on the DEB/RPM/MSI link and download your agent.
 
-    Usage (called as site user):
-    omd help                        Show general help
-    omd version    [SITE]           Show version of OMD
-    omd versions                    List installed OMD versions
-    omd sites                       Show list of sites
-    omd update                      Update site to other version of OMD
-    omd start      [SERVICE]        Start services of one or all sites
-    omd stop       [SERVICE]        Stop services of site(s)
-    omd restart    [SERVICE]        Restart services of site(s)
-    omd reload     [SERVICE]        Reload services of site(s)
-    omd status     [SERVICE]        Show status of services of site(s)
-    omd config     ...              Show and set site configuration parameters
-    omd diff       ([RELBASE])      Shows differences compared to the original version files
-    omd umount                      Umount ramdisk volumes of site(s)
-    omd backup     SITE [-|ARCHIVE_PATH] Create a backup tarball of a site, writing it to a file or stdout
+Copy that agent over to your monitored server(s) and install according to your operating environment requirements.
 
-    General Options:
-    -V <version>                    set specific version, useful in combination with update/create
-    omd COMMAND -h, --help          show available options of COMMAND
+Prebuilt package
+-----------
+All OMD site instances have prebuilt agents available in ~share/check_mk/agents. You will find there the MSI, RPM and DEB agent as well as the pure (script) agents (check_mk_agent.linux).
 
-Here is example out form the omd command called as the root user: ::
+The RPM/DEB packages will place the check_mk_agent script (for linux/unix) environments in its proper place (/usr/bin). If you download the check_mk_agent.(linux|unix|*) script then you must make this file executable (chmod +x) and also place it in its proper place. You may also want to create the MK_LIBDIR (/usr/lib/check_mk_agent) and MK_CONFDIR (/etc/check_mk) for configuration variables or custom/local plugins (more on these later).
 
-    omd [root@cmk mariusp]# omd
-    Usage (called as root):
+These prebuilt agents are also available via the OMD site URL: http://hostname_or_ip/<omd site name>/check_mk/agents/. At this URL you will also find additional plugins as well as the xinetd.conf configuration file.
 
-    omd help                               Show general help
-    omd setup                              Prepare operating system for OMD (installs packages)
-    omd uninstall                          Remove OMD and all sites!
-    omd setversion VERSION                 Sets the default version of OMD which will be used by new sites
-    omd version    [SITE]                  Show version of OMD
-    omd versions                           List installed OMD versions
-    omd sites                              Show list of sites
-    omd create     SITE                    Create a new site (-u UID, -g GID)
-    omd init       SITE                    Populate site directory with default files and enable the site
-    omd rm         SITE                    Remove a site (and its data)
-    omd disable    SITE                    Disable a site (stop it, unmount tmpfs, remove Apache hook)
-    omd enable     SITE                    Enable a site (reenable a formerly disabled site)
-    omd mv         SITE NEWNAME            Rename a site
-    omd cp         SITE NEWNAME            Make a copy of a site
-    omd update     SITE                    Update site to other version of OMD
-    omd start      [SITE] [SERVICE]        Start services of one or all sites
-    omd stop       [SITE] [SERVICE]        Stop services of site(s)
-    omd restart    [SITE] [SERVICE]        Restart services of site(s)
-    omd reload     [SITE] [SERVICE]        Reload services of site(s)
-    omd status     [SITE] [SERVICE]        Show status of services of site(s)
-    omd config     SITE ...                Show and set site configuration parameters
-    omd diff       SITE ([RELBASE])        Shows differences compared to the original version files
-    omd su         SITE                    Run a shell as a site-user
-    omd umount     [SITE]                  Umount ramdisk volumes of site(s)
-    omd backup     SITE SITE [-|ARCHIVE_PATH] Create a backup tarball of a site, writing it to a file or stdout
-    omd restore    [SITE] [-|ARCHIVE_PATH] Restores the backup of a site to an existing site or creates a new site
+Xinetd
+-----------
+The easiest and quickest way to get up and running is to setup xinetd to ease communications between the check_mk server and the agent. In the prebuilt agents directory you also have an xinetd.conf file. Copy this file over to /etc/xinet.d/check_mk and edit accordingly. Usually you want to configure the only_from variable to allow connections only from your monitoring server.
 
-    General Options:
-    -V <version>                    set specific version, useful in combination with update/create
-    omd COMMAND -h, --help          show available options of COMMAND
+After copying the xinetd configuration file restart the xinetd server and proceed to testing connectivity by telnetting from your monitoring server to your monitoring client on tcp port 6556.
 
+::
 
-OMD config command
+    user@host> telnet xyzhost123 6556
+    Trying 10.0.21.47...
+    Connected to xyzhost123.
+    Escape character is '^]'.
+    <<<check_mk>>>
+    Version: 1.1.8
+    AgentOS: linux
+    <<<df>>>
+    /dev/sda1     ext3     1008888    223832    733808      24% /
+    /dev/sdc1     ext3     1032088    284648    695012      30% /lib/modules
+    <<<ps>>>
+    init [3]
+    /sbin/syslogd
+    /sbin/klogd -x
+    /usr/sbin/cron
+    /sbin/getty 38400 tty2
+
+Adding host to OMD
 ------------------
-To configure your site as a user you issue the following
+After confirming that the agent is accessible you can access WATO, Hosts and click on New host. For our example you can fill out just the hostname and click on Save & go to Services button.
 
-``omd config``
+If the hostname is resolvable via DNS you do not need to also specify the IP address however if it is not then the IP address is a required field.
 
-To configure your site as the root user you must also specify the site name as
-follows
+After this step you will be taken to the Services page where you can select and configure the services that check_mk has discovered on your server.
 
-``omd config siteone``
+For every service discovered you can choose to:
 
-In either case you will get a graphical interface to aid you in configuration.
+.. image:: _images/srv-discovery.png
 
-.. image:: _images/ev-config1.png
+(1) View and edit parameters
+(2) Edit and analyze check parameters
+(3) Create a rule to permanently disable discovery of said service
+(4) Temporarily ignore the service
 
-We recommend that for your first site you do not make any modifications since
-these options are for advanced usage.
 
-Basic
- * Autostart: Lets you choose if your site is started automatically during reboot of your server
- * Core: Allows you to use the traditional nagios core or the microcore
- * Crontab: Disables or enables site specific crontabs at boot time
- * tmpfs: Disables or enables the use of a ramdisk for temporary files
-
-Web GUI
- * Apache Mode: Lets you choose to run a dedicated apache webserver for this site, or use the system webserver process directly
- * Apache TCP_ADDR: Lets you choose the ip address of your apache webserver
- * Apache TCP_PORT: Lets you choose the tcp port apache uses
- * Default_GUI: Lets you choose other GUIs besides Check_MKs multisite GUI
- * DOKUWIKI_AUTH: Enables the use of the dokuwiki user database for authentication instead of ~/etc/passwd
- * MULTISITE_AUTHORISATION: Lets multisite manage the permissions of the addon users
- * MULTISITE_COOKIE_AUTH: Enable or disable cookie based authentication
- * NAGIOS_THEME: Switch between installed Nagios themes
-
-Addons
- * MKEVENTD: This option enables mkeventd - the event correlation and classification daemon of Check_MK
- * MKNOTIFYD: Enables of disables Check_MKs notification spooler
- * NAGVIS_URLS: Lets you choose which GUI is used when clicking on the NagVis map icons
- * PNP4NAGIOS: Lets you enable or disable PNP4Nagios, a great addon to store nagios performance data to round robin databases
-
-Distributed Monitoring
- * LIVEPROXYD: This option enables the livestatus proxy daemon
- * LIVESTATUS_TCP: Make the livestatus proxy daemon listen on a tcp port in addition to the unix socket
+* Additional details can be found at the check_mk site https://mathias-kettner.de/checkmk_linuxagent.html
