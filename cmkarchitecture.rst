@@ -1,17 +1,15 @@
 Check_MK Architecture
 ======================
 
-Before you go any further get to know the check_mk architecture. There are many
-parts involved and it helps to know your way around. Luckily the check_mk
-monitoring system is rock solid and you should never have to deal with the
-components directly unless you need to change some defaults or something is not
-working as expected.
+You should always know the architecture of your systems, networks, applications, etc. The more you know about the moving parts the easier it is
+to debug or troubleshoot something. Having detailed information about the inner workings of anything is extremely useful in identifying potential issues before or after an incident.
+
+Below we will take a look at the Check_MK architecture so that you may know all of the components involved. This information will help you in scaling or identifying eventual performance issues as you should be able to spot the symptoms and associate them with functional components.
 
 .. image:: _images/cmk-architecture.png
 
-
 Check_MK Components
-===================
+-------------------
 There are many components that make up the Check_MK monitoring system. Below you
 will find information about each of the major components.
 
@@ -70,8 +68,12 @@ Check_MK's Web Administration Tool makes the complete administration of a
 Check_MK-based system possible over a Browser. This is not restricted to the
 management of Hosts and Services and the typical Check_MK-rules, but also
 includes the management of users, roles, groups, time periods, classical
-Nagios-Checks and much more. With a modern roles concept authorizations can be
-assigned so that tasks can be reliably given to colleagues.
+Nagios-Checks and much more. With a modern roles concept authorizations can be assigned so that tasks can be reliably given to colleagues.
+
+WATO is accessible from within Multisite via many of the contextual menu's and buttons but also from the Sidebar snap-in named WATO.
+
+.. image:: _images/wato.png
+
 
 Official WATO documentation is available here
 http://mathias-kettner.com/checkmk_wato.html

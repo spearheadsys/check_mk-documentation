@@ -72,8 +72,8 @@
 <li class="toctree-l2"><a class="reference internal" href="intro.html#active-vs-passive-checks">Active vs. Passive Checks</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Check_MK Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#check-mk-components">Check_MK Components</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Check_MK Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#check-mk-components">Check_MK Components</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#configuration-check-engine">Configuration &amp; Check Engine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#livestatus">Livestatus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#multisite">Multisite</a></li>
@@ -100,6 +100,11 @@
 <li class="toctree-l2"><a class="reference internal" href="firstsite.html#omd-command">OMD command</a></li>
 <li class="toctree-l2"><a class="reference internal" href="firstsite.html#omd-config-command">OMD config command</a></li>
 <li class="toctree-l2"><a class="reference internal" href="firstsite.html#creating-the-site">Creating the site</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contacts.html">Contacts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contacts.html#roles">Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contacts.html#contact-groups">Contact Groups</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="firstlnxhost.html">Adding a Linux host</a><ul>
@@ -156,17 +161,15 @@
             
   <div class="section" id="check-mk-architecture">
 <h1>Check_MK Architecture<a class="headerlink" href="#check-mk-architecture" title="Permalink to this headline">¶</a></h1>
-<p>Before you go any further get to know the check_mk architecture. There are many
-parts involved and it helps to know your way around. Luckily the check_mk
-monitoring system is rock solid and you should never have to deal with the
-components directly unless you need to change some defaults or something is not
-working as expected.</p>
+<p>You should always know the architecture of your systems, networks, applications, etc. The more you know about the moving parts the easier it is
+to debug or troubleshoot something. Having detailed information about the inner workings of anything is extremely useful in identifying potential issues before or after an incident.</p>
+<p>Below we will take a look at the Check_MK architecture so that you may know all of the components involved. This information will help you in scaling or identifying eventual performance issues as you should be able to spot the symptoms and associate them with functional components.</p>
 <img alt="_images/cmk-architecture.png" src="_images/cmk-architecture.png" />
-</div>
 <div class="section" id="check-mk-components">
-<h1>Check_MK Components<a class="headerlink" href="#check-mk-components" title="Permalink to this headline">¶</a></h1>
+<h2>Check_MK Components<a class="headerlink" href="#check-mk-components" title="Permalink to this headline">¶</a></h2>
 <p>There are many components that make up the Check_MK monitoring system. Below you
 will find information about each of the major components.</p>
+</div>
 <div class="section" id="configuration-check-engine">
 <h2>Configuration &amp; Check Engine<a class="headerlink" href="#configuration-check-engine" title="Permalink to this headline">¶</a></h2>
 <p>The Check_MK CCE provides an elegant method for configuring your monitoring
@@ -218,8 +221,9 @@ more. Multisite utilizes Livestatus for access to the Status Data.</p>
 Check_MK-based system possible over a Browser. This is not restricted to the
 management of Hosts and Services and the typical Check_MK-rules, but also
 includes the management of users, roles, groups, time periods, classical
-Nagios-Checks and much more. With a modern roles concept authorizations can be
-assigned so that tasks can be reliably given to colleagues.</p>
+Nagios-Checks and much more. With a modern roles concept authorizations can be assigned so that tasks can be reliably given to colleagues.</p>
+<p>WATO is accessible from within Multisite via many of the contextual menu&#8217;s and buttons but also from the Sidebar snap-in named WATO.</p>
+<img alt="_images/wato.png" src="_images/wato.png" />
 <p>Official WATO documentation is available here
 <a class="reference external" href="http://mathias-kettner.com/checkmk_wato.html">http://mathias-kettner.com/checkmk_wato.html</a></p>
 </div>

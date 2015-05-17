@@ -1,35 +1,24 @@
 What is Monitoring all about?
 =============================
-We monitor entire systems, networks and applications to get information about
-their state as well as events.
+Keeping an eye on the entire it infrastructure provides many benefits for an entire business not just IT support or operations departments.
 
-The gathered information gives us an overview of the health of the
-infrastructure. It helps us react faster to incidents but more importantly it
-helps us in becoming more proactive by utilizing trending and historical
-information we will know to act before an issue becomes critical.
+We monitor entire systems, networks and applications to get information about what they are doing. The information we gather is helpful in keeping the systems running and in some cases for capacity planning or other decision making (what systems need upgrading; or which file servers need more space; which vm's are underutilized, etc.).
 
-Keeping an eye on the entire it infrastructure provides many benefits for the
-business side as well. With a properly configured monitoring solution you will
-have trending and historical information that can be used to make decisions such
-as capacity planning (what systems need upgrading in the next 6 months; or which
-file servers need more space).
+The IT support or operations departments have many things going on all the time such as new roll-outs or upgrades, keeping an eye on the existing systems, planning for future systems, the list just goes on. Monitoring is a fundamental strategy to keeping your systems up and running but to also provide insight into the entire IT infrastructure all the way up to applications.
 
-So now that we have this short overview of what monitoring can do for us lets
-look at what monitoring is all about from the check_mk perspective.
+With relevant and timely information you can move to a more ordered and predictable state. For some it means a shift in methodology from a "putting out the fires" mentality to a keeping them from happening in the first place.
+
+So what can monitoring do for us? Lets take a look at it from the Check_MK perspective and define some standard terminology to help us along.
 
 States
 ------
-States are determined by a measurement or a check.  This verification or polling
-needs to be carried out regularly.
+States are determined by a measurement or a check. This verification or polling needs to be carried out regularly.
 
-States give us information such as: is the service running, how much memory is
-being used and is a very reliable process.
+States give us information such as: is the service running, how much memory is being used and is usually a very reliable process.
 
 Events
 ------
-Events are more dynamic in their nature and therefore are not easily identified
-by a regular polling interval. Events may also be errors which only occur once
-making them that much more difficult to identify by regular checks. Examples of
+Events are more dynamic in their nature and therefore are not easily identified by a regular polling interval. Events may also be errors which only occur once making them that much more difficult to identify by regular checks. Examples of
 events are: disk I/O errors or hot-plug/add of a device.
 
 What is a monitoring system?
@@ -56,3 +45,6 @@ A passive check is sent directly by the monitored server and the server has no
 influence on when this result is sent. Furthermore a passive check may not send
 a result during a specified time-frame and the monitoring server can raise an
 alarm at that point.
+
+
+Now that we've got that out of the way let's take a look at the Check_MK architecture.

@@ -20,3 +20,7 @@ The elements of views - like layouts, filters and so on - can be extended via Py
 Distributed monitoring
 -----------
 Distributed monitoring is extremely useful in many situations. Check_MK allows for the centralized viewing of data as well as replication of data to remote sites.
+
+There are many other functionalities that Multisite can offer. Your best option is to dive in and test out the functionalities.
+
+More details are available at the official documentation http://mathias-kettner.com/checkmk.html.

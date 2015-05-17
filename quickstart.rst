@@ -35,10 +35,8 @@ Your mileage will vary.
 
 SMTP for outgoing emails
 ----------------------------
-In order to send emails your SMTP service has to be configured correctly. Your
-SMTP service should be configured before you attempt to send notifications via
-Check_MK. Look at your distributions documentation for the proper configuration
-steps.
+In order to send emails your SMTP service has to be configured correctly. Look at your distributions documentation for the proper configuration
+steps if you would like to use email notifications.
 
 Time services
 ----------
@@ -63,7 +61,7 @@ set-up the EPEL repository.
 
 ``root@linux# yum install https://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm``
 
-Debian and Ubuntu systems have all necessary packages.
+Debian and Ubuntu systems have all the necessary packages.
 
 SuSE Linux needs some special attention which we will not cover here. You can
 get more details about what needs to be done for SuSE set-ups at the following

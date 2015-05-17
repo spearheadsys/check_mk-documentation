@@ -72,8 +72,8 @@
 <li class="toctree-l2"><a class="reference internal" href="intro.html#active-vs-passive-checks">Active vs. Passive Checks</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="cmkarchitecture.html">Check_MK Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cmkarchitecture.html#check-mk-components">Check_MK Components</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="cmkarchitecture.html">Check_MK Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cmkarchitecture.html#check-mk-components">Check_MK Components</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cmkarchitecture.html#configuration-check-engine">Configuration &amp; Check Engine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cmkarchitecture.html#livestatus">Livestatus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cmkarchitecture.html#multisite">Multisite</a></li>
@@ -102,9 +102,28 @@
 <li class="toctree-l2"><a class="reference internal" href="firstsite.html#creating-the-site">Creating the site</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="contacts.html">Contacts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contacts.html#roles">Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contacts.html#contact-groups">Contact Groups</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="firstlnxhost.html">Adding a Linux host</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="firstlnxhost.html#omd-command">OMD command</a></li>
-<li class="toctree-l2"><a class="reference internal" href="firstlnxhost.html#omd-config-command">OMD config command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firstlnxhost.html#agent-bakery">Agent bakery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firstlnxhost.html#prebuilt-package">Prebuilt package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firstlnxhost.html#xinetd">Xinetd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firstlnxhost.html#adding-host-to-omd">Adding host to OMD</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="firstwinhost.html">Adding a Windows host</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firstwinhost.html#agent-bakery">Agent bakery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firstwinhost.html#prebuilt-package">Prebuilt package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firstwinhost.html#windows-installer">Windows installer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firstwinhost.html#adding-host-to-omd">Adding host to OMD</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multisite.html">Multisite</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multisite.html#views">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multisite.html#distributed-monitoring">Distributed monitoring</a></li>
 </ul>
 </li>
 </ul>
@@ -200,7 +219,7 @@ with the installation of an RPM package for your specific distribution.</p>
 <p>If for example you were running CentOS 6 or RHEL 6 the following command would
 set-up the EPEL repository.</p>
 <p><tt class="docutils literal"><span class="pre">root&#64;linux#</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">https://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm</span></tt></p>
-<p>Debian and Ubuntu systems have all necessary packages.</p>
+<p>Debian and Ubuntu systems have all the necessary packages.</p>
 <p>SuSE Linux needs some special attention which we will not cover here. You can
 get more details about what needs to be done for SuSE set-ups at the following
 link.</p>

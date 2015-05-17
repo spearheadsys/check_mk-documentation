@@ -37,7 +37,7 @@ Here is example output from the omd command called as a site user: ::
     -V <version>                    set specific version, useful in combination with update/create
     omd COMMAND -h, --help          show available options of COMMAND
 
-Here is example out form the omd command called as the root user: ::
+Here is example out from the omd command called as the root user: ::
 
     omd [root@cmk mariusp]# omd
     Usage (called as root):

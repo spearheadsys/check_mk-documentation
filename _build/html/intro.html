@@ -72,8 +72,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#active-vs-passive-checks">Active vs. Passive Checks</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="cmkarchitecture.html">Check_MK Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cmkarchitecture.html#check-mk-components">Check_MK Components</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="cmkarchitecture.html">Check_MK Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cmkarchitecture.html#check-mk-components">Check_MK Components</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cmkarchitecture.html#configuration-check-engine">Configuration &amp; Check Engine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cmkarchitecture.html#livestatus">Livestatus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cmkarchitecture.html#multisite">Multisite</a></li>
@@ -102,9 +102,28 @@
 <li class="toctree-l2"><a class="reference internal" href="firstsite.html#creating-the-site">Creating the site</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="contacts.html">Contacts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contacts.html#roles">Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contacts.html#contact-groups">Contact Groups</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="firstlnxhost.html">Adding a Linux host</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="firstlnxhost.html#omd-command">OMD command</a></li>
-<li class="toctree-l2"><a class="reference internal" href="firstlnxhost.html#omd-config-command">OMD config command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firstlnxhost.html#agent-bakery">Agent bakery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firstlnxhost.html#prebuilt-package">Prebuilt package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firstlnxhost.html#xinetd">Xinetd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firstlnxhost.html#adding-host-to-omd">Adding host to OMD</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="firstwinhost.html">Adding a Windows host</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firstwinhost.html#agent-bakery">Agent bakery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firstwinhost.html#prebuilt-package">Prebuilt package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firstwinhost.html#windows-installer">Windows installer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firstwinhost.html#adding-host-to-omd">Adding host to OMD</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multisite.html">Multisite</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multisite.html#views">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multisite.html#distributed-monitoring">Distributed monitoring</a></li>
 </ul>
 </li>
 </ul>
@@ -142,31 +161,19 @@
             
   <div class="section" id="what-is-monitoring-all-about">
 <h1>What is Monitoring all about?<a class="headerlink" href="#what-is-monitoring-all-about" title="Permalink to this headline">¶</a></h1>
-<p>We monitor entire systems, networks and applications to get information about
-their state as well as events.</p>
-<p>The gathered information gives us an overview of the health of the
-infrastructure. It helps us react faster to incidents but more importantly it
-helps us in becoming more proactive by utilizing trending and historical
-information we will know to act before an issue becomes critical.</p>
-<p>Keeping an eye on the entire it infrastructure provides many benefits for the
-business side as well. With a properly configured monitoring solution you will
-have trending and historical information that can be used to make decisions such
-as capacity planning (what systems need upgrading in the next 6 months; or which
-file servers need more space).</p>
-<p>So now that we have this short overview of what monitoring can do for us lets
-look at what monitoring is all about from the check_mk perspective.</p>
+<p>Keeping an eye on the entire it infrastructure provides many benefits for an entire business not just IT support or operations departments.</p>
+<p>We monitor entire systems, networks and applications to get information about what they are doing. The information we gather is helpful in keeping the systems running and in some cases for capacity planning or other decision making (what systems need upgrading; or which file servers need more space; which vm&#8217;s are underutilized, etc.).</p>
+<p>The IT support or operations departments have many things going on all the time such as new roll-outs or upgrades, keeping an eye on the existing systems, planning for future systems, the list just goes on. Monitoring is a fundamental strategy to keeping your systems up and running but to also provide insight into the entire IT infrastructure all the way up to applications.</p>
+<p>With relevant and timely information you can move to a more ordered and predictable state. For some it means a shift in methodology from a &#8220;putting out the fires&#8221; mentality to a keeping them from happening in the first place.</p>
+<p>So what can monitoring do for us? Lets take a look at it from the Check_MK perspective and define some standard terminology to help us along.</p>
 <div class="section" id="states">
 <h2>States<a class="headerlink" href="#states" title="Permalink to this headline">¶</a></h2>
-<p>States are determined by a measurement or a check.  This verification or polling
-needs to be carried out regularly.</p>
-<p>States give us information such as: is the service running, how much memory is
-being used and is a very reliable process.</p>
+<p>States are determined by a measurement or a check. This verification or polling needs to be carried out regularly.</p>
+<p>States give us information such as: is the service running, how much memory is being used and is usually a very reliable process.</p>
 </div>
 <div class="section" id="events">
 <h2>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h2>
-<p>Events are more dynamic in their nature and therefore are not easily identified
-by a regular polling interval. Events may also be errors which only occur once
-making them that much more difficult to identify by regular checks. Examples of
+<p>Events are more dynamic in their nature and therefore are not easily identified by a regular polling interval. Events may also be errors which only occur once making them that much more difficult to identify by regular checks. Examples of
 events are: disk I/O errors or hot-plug/add of a device.</p>
 </div>
 <div class="section" id="what-is-a-monitoring-system">
@@ -192,6 +199,7 @@ is triggered by the monitoring server usually through a poll or request.</p>
 influence on when this result is sent. Furthermore a passive check may not send
 a result during a specified time-frame and the monitoring server can raise an
 alarm at that point.</p>
+<p>Now that we&#8217;ve got that out of the way let&#8217;s take a look at the Check_MK architecture.</p>
 </div>
 </div>
 

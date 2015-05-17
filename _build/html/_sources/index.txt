@@ -5,17 +5,17 @@
 Check_MK Documentation
 ======================
 
-Welcome to the Check_MK documentation. The official check_mk documentation is
-available at the following link http://mathias-kettner.com/checkmk.html.
+Welcome to the Check_MK documentation.
 
-The documentation provided here is a personal effort to provide documentation
-for the commercial check_mk monitoring system however the majority of the
+The documentation provided here is meant as a quick introduction to the Check_MK Enterprise Edition (CEE). The majority of the
 information here should apply to the open source versions as well.
 
-If you find mistakes or feel you could contribute in helping us provide better documentation please feel free to dive in by visiting `this github page`_.
+If you find mistakes or feel you could contribute in helping us provide better documentation please dive in by visiting `this github page`_.
 
 .. _this github page: https://github.com/mariuspana/check_mk-documentation
 
+The definitive Check_MK documentation is
+available at the following link http://mathias-kettner.com/checkmk.html.
 
 Contents:
 
