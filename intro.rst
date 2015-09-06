@@ -14,12 +14,11 @@ States
 ------
 States are determined by a measurement or a check. This verification or polling needs to be carried out regularly.
 
-States give us information such as: is the service running, how much memory is being used and is usually a very reliable process.
+States give us information such as: is the service running, how much memory is being used and is a very reliable process.
 
 Events
 ------
-Events are more dynamic in their nature and therefore are not easily identified by a regular polling interval. Events may also be errors which only occur once making them that much more difficult to identify by regular checks. Examples of
-events are: disk I/O errors or hot-plug/add of a device.
+Events are more dynamic in their nature and therefore are not easily identified by a regular polling interval. Events may also be errors which only occur once making them that much more difficult to identify by regular checks. Examples of events are: disk I/O errors or hot-plug/add of a device.
 
 What is a monitoring system?
 ----------------------------
@@ -38,13 +37,10 @@ service.
 
 Active vs. Passive Checks
 -------------------------
-In monitoring there is the concept of active and passive checks. An active check
-is triggered by the monitoring server usually through a poll or request.
+In monitoring there is the concept of active and passive checks. An active check is triggered by the monitoring server usually through a poll or request.
 
 A passive check is sent directly by the monitored server and the server has no
-influence on when this result is sent. Furthermore a passive check may not send
-a result during a specified time-frame and the monitoring server can raise an
-alarm at that point.
+influence on when this result is sent. Furthermore a passive check may not send a result during a specified time-frame and the monitoring server can raise an alarm at that point.
 
 
 Now that we've got that out of the way let's take a look at the Check_MK architecture.
