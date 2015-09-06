@@ -87,7 +87,7 @@ follows
 
 In either case you will get a graphical interface to aid you in configuration.
 
-.. image:: _images/ev-config1.png
+.. image:: custom/_images/ev-config1.png
 
 We recommend that for your first site you do not make any modifications since
 these options are for advanced usage.

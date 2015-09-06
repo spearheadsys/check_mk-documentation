@@ -4,9 +4,9 @@ Check_MK has the concept of Contacts, Contact Groups and Roles. With OMD you wil
 
 Contacts are managed via WATO. Before you create a new user you should first think about how your users and hosts are organized and how they will use the site.
 
-.. image:: /_images/sidebarusers.png
+.. image:: custom/_images/sidebarusers.png
    :width: 40%
-.. image:: /_images/watousers.png
+.. image:: custom/_images/watousers.png
 
 Contacts are usually people you want to notify when something happens within your infrastructure. There are however many different ways to use a Contact such as a Multisite only users that does not receive notifications.
 
