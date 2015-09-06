@@ -31,4 +31,4 @@ Between Users, Contact Groups and Roles you can configure and assign many comple
 
 To use Rules to configure automatic assignment of hosts and services to contact groups access WATO, Contact Groups and click on the Rules button.
 
-.. image:: cgrules.png
+.. image:: _static/cgrules.png
