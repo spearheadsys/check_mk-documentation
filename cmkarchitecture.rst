@@ -6,7 +6,7 @@ to debug or troubleshoot something. Having detailed information about the inner 
 
 Below we will take a look at the Check_MK architecture so that you may know all of the components involved. This information will help you in scaling or identifying eventual performance issues as you should be able to spot the symptoms and associate them with functional components.
 
-.. image:: _images/cmk-architecture.png
+.. image:: custom/_images/cmk-architecture.png
 
 Check_MK Components
 -------------------
@@ -72,7 +72,7 @@ Nagios-Checks and much more. With a modern roles concept authorizations can be a
 
 WATO is accessible from within Multisite via many of the contextual menu's and buttons but also from the Sidebar snap-in named WATO.
 
-.. image:: _images/wato.png
+.. image:: custom/_images/wato.png
 
 
 Official WATO documentation is available here

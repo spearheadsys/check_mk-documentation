@@ -69,7 +69,7 @@ After this step you will be taken to the Services page where you can select and 
 
 For every service discovered you can choose to:
 
-.. image:: _images/srv-discovery.png
+.. image:: custom/_images/srv-discovery.png
 
 (1) View and edit parameters
 (2) Edit and analyze check parameters
