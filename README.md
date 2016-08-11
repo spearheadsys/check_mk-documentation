@@ -5,5 +5,5 @@ The documentation provided here is meant as an introduction to the Check_MK Ente
 
 If you find mistakes or feel you could contribute in helping us provide better documentation please dive in.
 
-This project is not meant to be the definitive Check_MK documentatino. The official Check_MK documentation is
+This project is not meant to be the definitive Check_MK documentation. The official Check_MK documentation is
 available at the following link http://mathias-kettner.com/checkmk.html.
