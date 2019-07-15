@@ -71,7 +71,7 @@ http://mathias-kettner.com/cms_install_packages.html#H1:2.%20Setting%20up%20the%
 
 Downloading Check_MK
 --------------------
-In your `subscription area <http://mathias-kettner.com/nagios_support_download.php?HTML=yes>`_ you can download the package for your operating
+In your `subscription area <https://checkmk.com/cms_install_packages.html#SLES%2011>`_ you can download the package for your operating
 environment.
 
 Take note of the following selecting the package to download:
