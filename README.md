@@ -1,6 +1,6 @@
 # Check_MK Documentation
 Welcome to our Check_MK documentation. This project is primarily used by 
-[https://spearhead.systems](Spearhead) employeed as part of our training
+[https://spearhead.systems](Spearhead) employees as part of our training
 and quickstart guides when starting out with Check_MK. 
 We are delighted if it can help others as well.
 
