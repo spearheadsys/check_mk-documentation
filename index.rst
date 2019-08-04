@@ -15,7 +15,7 @@ If you find mistakes or feel you could contribute in helping us provide better d
 .. _this github page: https://github.com/mariuspana/check_mk-documentation
 
 The official Check_MK documentation is
-available at the following link http://mathias-kettner.com/checkmk.html.
+available at the following link https://checkmk.com/cms.html.
 
 Contents:
 
