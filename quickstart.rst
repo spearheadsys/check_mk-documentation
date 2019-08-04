@@ -71,7 +71,7 @@ http://mathias-kettner.com/cms_install_packages.html#H1:2.%20Setting%20up%20the%
 
 Downloading Check_MK
 --------------------
-In your `subscription area <https://checkmk.com/cms_install_packages.html#SLES%2011>`_ you can download the package for your operating
+In your `subscription area <https://checkmk.com/download.php?>`_ you can download the package for your operating
 environment.
 
 Take note of the following selecting the package to download:
@@ -118,9 +118,10 @@ Here, the installation is done using yum localinstall:
 Confirmation
 ------------
 After you have successfully installed Check_MK and all of the necessary
-dependencies you will have access to the omd command. The omd command allows
-you to set-up and manage monitoring instances. For a quick confirmation that
-your system is ready try the following command:
+dependencies you will have access to the omd command. 
+
+The omd command allows you to set-up and manage monitoring instances. 
+For a quick confirmation thatyour system is ready try the following command:
 
 ``omd version``
 

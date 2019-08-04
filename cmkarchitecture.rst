@@ -37,7 +37,7 @@ for your monitoring system. You can focus on gathering the information that is
 important to you and less on configuration files.
 
 Official Check_MK CCE documentation is available here
-http://mathias-kettner.com/checkmk_ways_to_install.html
+https://checkmk.com/cms.html
 
 Livestatus
 ----------
@@ -48,7 +48,7 @@ possible from all programming languages with no need for a special library -
 even from the Shell.
 
 Official Livestatus documentation is available here
-http://mathias-kettner.com/checkmk_livestatus.html
+https://checkmk.com/cms_livestatus.html
 
 Multisite
 ---------
@@ -60,7 +60,7 @@ integrated LDAP-connection, an access to Status Data via Web-services and much
 more. Multisite utilizes Livestatus for access to the Status Data.
 
 Official Multisite documentation is available here
-http://mathias-kettner.com/checkmk_multisite.html
+https://checkmk.com/cms_user_interface.html
 
 WATO
 ----
@@ -76,7 +76,7 @@ WATO is accessible from within Multisite via many of the contextual menu's and b
 
 
 Official WATO documentation is available here
-http://mathias-kettner.com/checkmk_wato.html
+https://checkmk.com/cms_wato.html
 
 Notify
 ------
@@ -88,7 +88,7 @@ multiple artificial users. The users can additionally configure their
 notifications themselves.
 
 Official Notify documentation is available here
-http://mathias-kettner.com/checkmk_flexible_notifications.html
+https://checkmk.com/cms_notifications.html
 
 Business Intelligence
 ---------------------
@@ -100,7 +100,7 @@ quickly answered. The integrated "What if?" - Analysis simplifies the downtime
 planning.
 
 Official Business Intelligence documentation is available here
-http://mathias-kettner.com/checkmk_bi.html
+https://checkmk.com/cms_bi.html
 
 Mobile
 ------
@@ -119,4 +119,4 @@ transcribed and much more. The Event Console even utilizes an inbuilt
 Syslog-Daemon that receives messages directly from Port 514.
 
 Official Event Console documentation is available here
-http://mathias-kettner.com/checkmk_mkeventd.html
+https://checkmk.com/cms_ec.html

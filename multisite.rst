@@ -1,13 +1,13 @@
 Multisite
 ==========
-Check_MK utilises the intuitive Multisite web GUI for displaying monitoring status information. Multisite is based on Livestatus therefore it is extremely fast and respomsive in large installations.
+Check_MK utilises the intuitive Multisite web GUI for displaying monitoring status information. Multisite is based on Livestatus therefore it is extremely fast and responsive in large installations.
 
-Multisite brings many innovations such as:
+Multisite brings many features such as:
 
 - User definable Views
 - Support for distributed monitoring via Livestatus
 - Customizable sidebar with dynamic content
-- Automation and Webservice
+- Automation and Webservice (API)
 - Dashboards
 - Localization
 
@@ -23,4 +23,4 @@ Distributed monitoring is extremely useful in many situations. Check_MK allows f
 
 There are many other functionalities that Multisite can offer. Your best option is to dive in and test out the functionalities.
 
-More details are available at the official documentation http://mathias-kettner.com/checkmk.html.
+More details are available at the official documentation [https://checkmk.com/cms.html](https://checkmk.com/cms.html).

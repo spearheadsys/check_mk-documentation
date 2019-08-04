@@ -68,4 +68,4 @@ For every service discovered you can choose to:
 (4) Temporarily ignore the service
 
 
-* Additional details can be found at the check_mk site https://mathias-kettner.de/checkmk_linuxagent.html
+* Additional details can be found at the check_mk site [https://checkmk.com/cms_agent_linux.html](https://checkmk.com/cms_agent_linux.html)

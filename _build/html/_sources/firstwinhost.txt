@@ -78,4 +78,4 @@ For every service discovered you can choose to:
 
 
 
-* Additional details can be found at the check_mk site https://mathias-kettner.de/checkmk_windows.html
+* Additional details can be found at the check_mk site https://checkmk.de/cms_legacy_windows.html
