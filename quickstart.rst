@@ -67,7 +67,7 @@ SuSE Linux needs some special attention which we will not cover here. You can
 get more details about what needs to be done for SuSE set-ups at the following
 link.
 
-http://mathias-kettner.com/cms_install_packages.html#H1:2.%20Setting%20up%20the%20repositories
+https://checkmk.com/cms_install_packages.html#SLES%2011
 
 Downloading Check_MK
 --------------------
